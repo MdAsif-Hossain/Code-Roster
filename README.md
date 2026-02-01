@@ -1,80 +1,152 @@
-# Welcome to your Lovable project
+# 🔥 Code Roaster
 
-## Project info
+> **Your code is RAW!** Get brutally honest AI-powered code reviews from a Gordon Ramsay-inspired AI chef.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+![Neon Brutalism Design](https://img.shields.io/badge/Design-Neon%20Brutalism-ff3366?style=for-the-badge)
+![Powered by Gemini](https://img.shields.io/badge/AI-Google%20Gemini%201.5%20Flash-4285F4?style=for-the-badge)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 
-## How can I edit this code?
+## 🎯 About
 
-There are several ways of editing your application.
+Code Roaster is a fun, interactive web app that uses Google's Gemini 1.5 Flash AI to roast your code screenshots with the personality of Gordon Ramsay. Upload a screenshot of your code and receive hilariously brutal (but constructive) feedback delivered in true Hell's Kitchen style!
 
-**Use Lovable**
+## ✨ Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- 🤖 **AI-Powered Roasts** - Real-time code analysis using Google Gemini 1.5 Flash
+- 👨‍🍳 **Gordon Ramsay Persona** - Get roasted by an AI with the personality of a world-famous angry chef
+- 🎨 **Neon Brutalism Design** - Eye-catching, modern UI with bold colors and animations
+- 🧾 **Receipt-Style Output** - Your roast delivered on a beautiful, crumpled receipt
+- 🔒 **Secure API** - API keys protected using Vercel Serverless Functions
+- 📱 **Responsive Design** - Works perfectly on desktop and mobile devices
+- ⚡ **Lightning Fast** - Built with Vite for optimal performance
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Tech Stack
 
-**Use your preferred IDE**
+- **Frontend**: React 18 + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS + Custom Neon Brutalism theme
+- **UI Components**: shadcn/ui + Radix UI
+- **AI**: Google Gemini 1.5 Flash API
+- **Backend**: Vercel Serverless Functions
+- **Deployment**: Vercel
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🚀 Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
 
-Follow these steps:
+- Node.js 18+ and npm
+- Google Gemini API key ([Get one here](https://makersuite.google.com/app/apikey))
+- Vercel account (for deployment)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Installation
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. **Clone the repository**
+   ```bash
+   git clone <YOUR_GIT_URL>
+   cd code-roaster
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-# Step 4: Set up your Google Gemini API key
-# Create a .env file and add your API key:
-# GOOGLE_API_KEY=your_api_key_here
-# Get your API key from: https://makersuite.google.com/app/apikey
+3. **Set up environment variables**
+   
+   Create a `.env` file in the root directory:
+   ```env
+   GOOGLE_API_KEY=your_api_key_here
+   ```
 
-# Step 5: Start the development server with Vercel CLI (required for API routes)
-npx vercel dev
+4. **Start the development server**
+   ```bash
+   npx vercel dev
+   ```
+   
+   > ⚠️ **Important**: You must use `npx vercel dev` instead of `npm run dev` to enable serverless functions locally.
+
+5. **Open your browser**
+   
+   Navigate to `http://localhost:3000` (or the port shown in your terminal)
+
+## 📦 Deployment
+
+### Deploy to Vercel
+
+1. **Install Vercel CLI** (if not already installed)
+   ```bash
+   npm i -g vercel
+   ```
+
+2. **Deploy**
+   ```bash
+   vercel --prod
+   ```
+
+3. **Set environment variables in Vercel**
+   - Go to your project settings in the Vercel dashboard
+   - Navigate to "Environment Variables"
+   - Add `GOOGLE_API_KEY` with your API key
+   - Redeploy if necessary
+
+## 🎮 Usage
+
+1. Upload a screenshot of your code (PNG, JPG, or GIF)
+2. Click the **"ROAST MY CODE"** button
+3. Watch the loading animation as the AI chef analyzes your code
+4. Receive your roast on a beautiful receipt-style output
+5. Laugh (or cry) at the brutal honesty!
+
+## 🏗️ Project Structure
+
+```
+code-roaster/
+├── api/
+│   └── roast.ts              # Vercel serverless function for Gemini API
+├── src/
+│   ├── components/
+│   │   ├── DropZone.tsx      # File upload component
+│   │   ├── RoastButton.tsx   # Main action button
+│   │   ├── RoastOutput.tsx   # Receipt-style result display
+│   │   └── ui/               # shadcn/ui components
+│   ├── pages/
+│   │   └── Index.tsx         # Main page
+│   ├── index.css             # Neon Brutalism styles
+│   └── main.tsx              # App entry point
+├── vercel.json               # Vercel configuration
+├── .env.example              # Environment variables template
+└── package.json
 ```
 
-> **Note:** This project uses Vercel Serverless Functions for the AI-powered code roasting feature. You must use `npx vercel dev` instead of `npm run dev` to test the API integration locally.
+## 🎨 Design Philosophy
 
-**Edit a file directly in GitHub**
+This project uses a **Neon Brutalism** design system featuring:
+- Bold, high-contrast colors (neon red on dark charcoal)
+- Sharp, geometric shapes with no rounded corners
+- Brutal box shadows for depth
+- Neon glow effects for emphasis
+- Scanline overlays for a retro-tech aesthetic
+- Playful animations (shake, pulse, float)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🤝 Contributing
 
-**Use GitHub Codespaces**
+Contributions are welcome! Feel free to:
+- Report bugs
+- Suggest new features
+- Submit pull requests
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📄 License
 
-## What technologies are used for this project?
+This project is open source and available under the MIT License.
 
-This project is built with:
+## 🙏 Acknowledgments
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- Powered by [Google Gemini AI](https://ai.google.dev/)
+- UI components from [shadcn/ui](https://ui.shadcn.com/)
+- Inspired by Gordon Ramsay's legendary kitchen rants
+- Built with [Vite](https://vitejs.dev/) and [React](https://react.dev/)
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+**Made with 🔥 and a lot of roasting**

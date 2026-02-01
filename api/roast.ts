@@ -29,8 +29,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Prepare the prompt
     const prompt = `You are a world-famous, angry, British head chef (Gordon Ramsay persona). Review this code screenshot. ROAST the style, indentation, and logic. Be funny, aggressive, and loud. Use cooking metaphors. Keep it under 150 words.`;
 
-    // Extract base64 data (remove data URL prefix if present)
-    const base64Data = image.replace(/^data:image\/\w+;base64,/, '');
+    // Extract base64 data and detect MIME type
+    let mimeType = 'image/jpeg'; // default
+    let base64Data = image;
+
+    // Check if it's a data URL and extract MIME type
+    const dataUrlMatch = image.match(/^data:(image\/\w+);base64,/);
+    if (dataUrlMatch) {
+      mimeType = dataUrlMatch[1];
+      base64Data = image.replace(/^data:image\/\w+;base64,/, '');
+    }
 
     // Generate content with the image
     const result = await model.generateContent([
@@ -38,7 +46,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       {
         inlineData: {
           data: base64Data,
-          mimeType: 'image/jpeg', // Default to JPEG, works for most images
+          mimeType: mimeType,
         },
       },
     ]);
@@ -50,7 +58,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).json({ roast });
   } catch (error) {
     console.error('Error generating roast:', error);
-    return res.status(500).json({ 
+    return res.status(500).json({
       error: 'Failed to generate roast',
       details: error instanceof Error ? error.message : 'Unknown error'
     });
