@@ -22,6 +22,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(500).json({ error: 'API key not configured' });
     }
 
+    // Verify API key and Model
+    console.log('Using API Key:', apiKey ? 'Present (starts with ' + apiKey.substring(0, 4) + ')' : 'Missing');
+    console.log('Model: gemini-1.5-flash');
+
     // Initialize Google Generative AI
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
@@ -40,6 +44,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       base64Data = image.replace(/^data:image\/\w+;base64,/, '');
     }
 
+    console.log('Generating content with mimeType:', mimeType);
+
+    console.log('Generating content...');
+
     // Generate content with the image
     const result = await model.generateContent([
       prompt,
@@ -51,13 +59,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       },
     ]);
 
+    console.log('Gemini API response received');
     const response = await result.response;
     const roast = response.text();
+    console.log('Roast generated successfully');
 
     // Return the roast
     return res.status(200).json({ roast });
   } catch (error) {
     console.error('Error generating roast:', error);
+    if (error instanceof Error) {
+      console.error('Error stack:', error.stack);
+      console.error('Error message:', error.message);
+    }
+
     return res.status(500).json({
       error: 'Failed to generate roast',
       details: error instanceof Error ? error.message : 'Unknown error'
